@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaše rodina jako Simpsonovi | Unikátní karikatury na plátně</title>
+    <style>
+        :root {
+            --primary-color: #ffd521; /* Simpsonovic žlutá */
+            --secondary-color: #0073cf; /* Marge modrá */
+            --accent-color: #d45f00; /* Homer oranžová */
+            --text-color: #333;
+            --light-bg: #f8f8f8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/api/placeholder/1200/600') center/cover;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #b84d00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .examples {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .example-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .rating {
+            color: gold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .order-form {
+            padding: 80px 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/api/placeholder/1200/600') center/cover;
+        }
+        
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .file-input {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .file-input:hover {
+            border-color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .steps {
+            padding: 80px 0;
+        }
+        
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .guarantee {
+            background-color: var(--primary-color);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .discount {
+            background-color: #ff4136;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .countdown {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .feature-grid, .testimonial-grid, .step-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="/api/placeholder/200/100" alt="Logo" style="max-width: 200px;">
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Vaše rodina jako Simpsonovi!</h1>
+            <h2>Unikátní personalizované karikatury na kvalitním plátně</h2>
+            <p>Exkluzivní dárek, který zaručeně rozesměje a potěší každého fanouška této kultovní rodiny</p>
+            <a href="#order-form" class="btn">Objednat nyní se slevou 20%</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Proč zvolit právě naši karikaturu?</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <img src="/api/placeholder/100/100" alt="Ručně malováno">
+                    <h3>Ručně kresleno umělci</h3>
+                    <p>Každá karikatury je precizně vytvořena zkušenými ilustrátory v autentickém Simpsonovic stylu.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="/api/placeholder/100/100" alt="Kvalitní plátno">
+                    <h3>Prémiové plátno</h3>
+                    <p>Tisk na vysoce kvalitní plátno zajistí dlouhou životnost a brilantní barvy po mnoho let.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="/api/placeholder/100/100" alt="Personalizace">
+                    <h3>Plně personalizováno</h3>
+                    <p>Zahrneme charakteristické rysy, zájmy a osobnost každého člena vaší rodiny.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="examples">
+        <div class="container">
+            <h2>Podívejte se na naše ukázky</h2>
+            <p>Proměníme vaši rodinu v nezapomenutelnou karikaturu ve stylu Simpsonů</p>
+            <div class="example-grid">
+                <div class="example-item">
+                    <img src="/api/placeholder/300/300" alt="Ukázka 1" style="width: 100%;">
+                </div>
+                <div class="example-item">
+                    <img src="/api/placeholder/300/300" alt="Ukázka 2" style="width: 100%;">
+                </div>
+                <div class="example-item">
+                    <img src="/api/placeholder/300/300" alt="Ukázka 3" style="width: 100%;">
+                </div>
+                <div class="example-item">
+                    <img src="/api/placeholder/300/300" alt="Ukázka 4" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps">
+        <div class="container">
+            <h2>Jak to funguje?</h2>
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3>Objednejte</h3>
+                    <p>Vyplňte objednávkový formulář a nahrajte své fotografie.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3>My kreslíme</h3>
+                    <p>Naši umělci vytvoří personalizovanou karikaturu podle vašich fotografií.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3>Schválení</h3>
+                    <p>Pošleme vám náhled ke schválení a případným úpravám.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <h3>Dodání</h3>
+                    <p>Hotový obraz na plátně doručíme přímo k vašim dveřím.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Co říkají naši zákazníci</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">"Naprosto úžasný dárek pro mého manžela k narozeninám! Celá rodina se smála, jak přesně nás umělec vystihl. Kvalita plátna je skvělá."</p>
+                    <p class="testimonial-author">- Markéta K., Praha</p>
+                </div>
+                <div class="testimonial-item">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">"Objednala jsem karikaturu jako dárek k výročí a byl to naprostý hit! Nejen že nás dokonale vystihli, ale i domácí mazlíčci vypadali úžasně."</p>
+                    <p class="testimonial-author">- Jan N., Brno</p>
+                </div>
+                <div class="testimonial-item">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">"Fantastická práce! Dodání bylo rychlejší, než jsem očekával, a kvalita předčila má očekávání. Určitě doporučuji!"</p>
+                    <p class="testimonial-author">- Tomáš V., Ostrava</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="order-form" id="order-form">
+        <div class="container">
+            <h2>Objednejte si svůj unikátní obraz</h2>
+            <form id="karikaturaForm">
+                <div class="price">
+                    Od 1499 Kč <span class="discount">-20%</span>
+                    <p class="price-note">* Cena zahrnuje návrh, tisk na plátno a dopravu</p>
+                </div>
+                
+                <div class="countdown">
+                    AKCE: Sleva 20% končí za 24:00:00
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Jméno a příjmení:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Telefon:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Adresa doručení:</label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Počet lidí/zvířat v karikatuře:</label>
+                    <select id="people" name="people" required>
+                        <option value="">Vyberte počet</option>
+                        <option value="1">1 osoba/zvíře</option>
+                        <option value="2">2 osoby/zvířata</option>
+                        <option value="3">3 osoby/zvířata</option>
+                        <option value="4">4 osoby/zvířata</option>
+                        <option value="5">5 osob/zvířat</option>
+                        <option value="6">6 osob/zvířat</option>
+                        <option value="7">7 osob/zvířat</option>
+                        <option value="8">8 osob/zvířat</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Velikost obrazu:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="size1" name="size" value="40x60" required>
+                            <label for="size1">40x60 cm (+0 Kč)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="size2" name="size" value="50x70">
+                            <label for="size2">50x70 cm (+200 Kč)</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="photos">Nahrajte své fotografie (max. 5 souborů):</label>
+                    <div class="file-input">
+                        <input type="file" id="photos" name="photos" multiple accept="image/*" required>
+                        <p>Pro nejlepší výsledek nahrajte fotografie s dobře viditelným obličejem</p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Poznámky k objednávce:</label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="Popište zde speciální požadavky, zájmy nebo osobnostní rysy, které chcete zahrnout."></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">OBJEDNAT NYNÍ</button>
+                
+                <p style="text-align: center; margin-top: 20px;">Garancí spokojenosti - pokud nebudete spokojeni, vrátíme vám peníze</p>
+            </form>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2>Často kladené otázky</h2>
+            
+            <div class="faq-item">
+                <p class="faq-question">Jak dlouho trvá vytvoření karikatury?</p>
+                <p>Standardní doba zpracování je 7-10 pracovních dní. Po dokončení návrhu vám zašleme elektronický náhled ke schválení.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Jaká je kvalita plátna?</p>
+                <p>Používáme pouze prémiové plátno s gramáží 340g/m² a špičkové pigmentové inkousty s UV ochranou pro zachování barev po mnoho let.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Mohu zahrnout domácí mazlíčky?</p>
+                <p>Ano, rádi zahrneme do karikatury i vaše domácí mazlíčky. Stačí je započítat do celkového počtu postav.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Jak probíhá doručení obrazu?</p>
+                <p>Obraz je pečlivě zabalen do ochranného obalu a doručen přepravní službou. Doprava po ČR je zdarma.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee">
+        <div class="container">
+            <h2>Naše garance</h2>
+            <p>100% záruka spokojenosti nebo vrátíme peníze</p>
+            <p>Jsme si jisti kvalitou našich karikatur. Pokud nebudete s výsledkem spokojeni, upravíme ho podle vašich požadavků nebo vám vrátíme peníze.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Vaše Karikatury | Všechna práva vyhrazena</p>
+            <p>Kontakt: info@vase-karikatury.cz | Tel: +420 123 456 789</p>
+        </div>
+    </footer>
+
+    <script>
+        // Jednoduchý odpočet pro vytvoření naléhavosti
+        function updateCountdown() {
+            const now = new Date();
+            const hours = 23 - now.getHours();
+            const minutes = 59 - now.getMinutes();
+            const seconds = 59 - now.getSeconds();
+            
+            document.querySelector('.countdown').innerHTML = 
+                `AKCE: Sleva 20% končí za ${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Předplatný formulář
+        document.getElementById('karikaturaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Děkujeme za vaši objednávku! Brzy vás budeme kontaktovat ohledně dalších detailů.');
+        });
+    </script>
+</body>
+</html>

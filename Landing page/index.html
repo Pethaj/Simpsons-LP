@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Vaše rodina jako Simpsonovi | Unikátní karikatury na plátně</title>
+    <style>
+        :root {
+            --primary-color: #f7e07b; /* Simpsonovic žlutá */
+            --secondary-color: #0073cf; /* Marge modrá */
+            --accent-color: #36ad03; /* Homer oranžová */
+            --text-color: #333;
+            --light-bg: #f8f8f8;
+        
+            --btn_color: #4173DE;
+            --textColorH2: #3e3f3e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+
+
+        
+        header {
+            
+            background: linear-gradient(to right, #FFD90F, #cfb003);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+                    header .content {
+                    position: relatlefive;
+                    z-index: 1;
+}
+
+                    header .wave {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: auto;
+                    z-index: 0;
+                    transform: translateY(1px);
+}
+@font-face {
+  font-family: 'Simpsonfont_DEMO';
+  src: url('/Simpsonfont_DEMO.otf') format('opentype'); /* uprav cestu podle umístění */
+}        
+        
+        
+        .hero {
+            /*background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/api/placeholder/1200/600') center/cover;*/
+            background: 
+                        linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                         center/cover;
+
+            padding: 10px 0;
+            text-align: center;
+            flex-direction: column;
+            
+        }
+
+            .hero .simpsons-text {
+            font-family: 'Simpsonfont_DEMO';
+            font-size: 2rem;
+            color: #ffcc00;
+            text-shadow:1px 1px 2px black;
+            line-height: 0.5;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--textColorH2);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+       
+        
+        .features {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .examples {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .example-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+           aspect-ratio: 1 / 1; /* nebo 1 / 1 pro čtverec */
+            position: relative;
+        }
+                .example-item img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                    }
+        
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .testimonial-grid {
+            display: flex;
+            flex-direction: column;
+                        gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+           /* position: relative;*/
+        }
+        
+            .testimonial-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+            }
+
+            .testimonial-text-block {
+            flex: 2;
+            }
+
+            .testimonial-photo {
+            flex: 1;
+            max-width: 150px;
+            }
+
+            .testimonial-photo img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .rating {
+            color: gold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+            /* Mobilní zobrazení – sloupce 
+            @media screen and (max-width: 767px) {
+            .testimonial-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .testimonial-photo {
+                max-width: 100px;
+                margin-top: 15px;
+            }
+            }*/
+        
+       /*  .order-form {
+            padding: 80px 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/api/placeholder/1200/600') center/cover;
+        }
+        
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--secondary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .file-input {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .file-input:hover {
+            border-color: var(--secondary-color);
+        }*/
+        
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .steps {
+            padding: 80px 0;
+            position: relative;
+            background-color: #4173DE;
+            overflow: hidden;
+            z-index: 1;
+            padding-top: 120px;
+            padding-bottom: 120px;
+        }
+            /* Vlna nahoře */
+            .steps-wave-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transform: translateY(-1px);
+            
+            overflow: hidden;
+            line-height: 0;
+            z-index: 2;
+        }
+
+            .steps-wave-top svg {
+                display: block;
+                width: 100%;
+                height: 100px;
+}
+            .steps-wave-bottom {  /* Vlna dole */
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                
+                overflow: hidden;
+                line-height: 0;
+                z-index: 2;
+            }
+
+            .steps-wave-bottom svg {
+                display: block;
+                width: 100%;
+                height: 100px;
+            }
+
+
+        
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4173DE;
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .guarantee {
+            background-color: var(--primary-color);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+    /*    .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .discount {
+            background-color: #ff4136;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .countdown {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        */
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .feature-grid, .testimonial-grid, .step-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="https://www.mujportret.cz/user/documents/upload/Můj Portrét.cz.png" alt="Logo" style="max-width: 200px;">
+        </div>
+ <div class="content">
+           
+          </div>
+          <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ffffff" fill-opacity="1" 
+              d="M0,96L60,128C120,160,240,224,360,229.3C480,235,600,181,720,170.7C840,160,960,192,1080,208C1200,224,1320,224,1380,224L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+            </path>
+          </svg>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2><span class="simpsons-text">Tvoje fotka jako Simpsonovic rodinka!</span></h2>
+            <h2>Už dost nudným a nepotřebným dárkům!
+                 Darujte neobvyklou věc, ze které si váš blízky <span class="lower-highlight">sedne na zadek</span> - ručně kreslený portrét ve stylu slavné Simpsonovy rodiny.
+                  Originální umělecké dílo vytvořené přesně <span class="lower-highlight">podle Vaší fotografie,</span> které nejen pobaví, ale stane se i ceněnou vzpomínkou na dlouhé roky.
+                  
+                 Konec bezradnému hledání dárků, které končí v šuplíku. Darujte něco, co má skutečně hodnotu - osobní, originální a s nádechem humoru.</h2>
+            <p>Chceš být nezapomenutelným hrdinou narozenin, výročí či jiných oslav?</p>
+            <a href="#order-form" class="btn">Objednat nyní se slevou 20%</a>
+            <div class="hero-img-container">
+            <img src="https://www.mujportret.cz/user/documents/upload/Návrh bez názvu (1)_1.png" alt="fotka" class="responsive-img" />
+        </div>
+        </div>
+        
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2><span class="underlined">Proč zvolit právě naši karikaturu?</span></h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <img src="https://www.mujportret.cz/user/documents/upload/9ubbu0.gif" alt="Ručně malováno" class="description-img-container">
+                    <h3>Ručně kresleno umělci</h3>
+                    <p>Naše ilustrace vznikají pod rukama <span class="lower-highlight"><b>skutečných umělců,</b></span> ne chladných algoritmů. Proč je to výhoda? Protože dokážeme zhmotnit přesně to, co si představujete.
+                        Žádné limity AI, žádné šablony – jen čistá kreativita a řemeslný um.
+                         Ruční práce, která se umí přizpůsobit vašim požadavkům, ať jsou jakkoli specifické. 
+                         <span class="lower-highlight"><b>Zapracujeme do díla cokoliv si budete přát</b></span> – nestandardní prvky, osobité detaily nebo kombinace stylů.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://www.mujportret.cz/user/documents/upload/2025-05-16_19-03-37.png" alt="Kvalitní plátno" class="description-img-container">
+                    <h3>Zasíláme fyzické obrazy</h3>
+                    <p>Domů vám příjde <span class="lower-highlight"><b> obraz,</b></span> připravené ihned zkrášlit váš prostor. 
+                        Tiskněme výhradně na prémiové 100% bavlněné plátno, které zajišťuje dokonalou reprodukci barev a mimořádnou trvanlivost.
+                        Žádné dodatečné rámování, žádné složité instalace - <span class="lower-highlight"><b> jen vybalit, pověsit a užívat si</b></span> radost z vašeho nového uměleckého díla,které se stane středem pozornosti každé místnosti.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://www.mujportret.cz/user/documents/upload/2025-05-16_19-23-30.png" alt="Personalizace" class="description-img-container">
+                    <h3>Dílo s vámi ladíme</h3>
+                    <p>Před tím, než vaše postavičky vstoupí do světa Springfieldu, <span class="lower-highlight"><b> jpošleme vám návrh rovnou do vašeho e-mailu.</b></span>  
+                        Tady nastává moment pravdy a vašich přání! Cítíte se jako Homer, ale chcete vypadat jako McBain? Žádný problém! 
+                        <span class="lower-highlight"><b> Přidáme svaly, ubereme pár donutů z pasu, změníme účes</b></span>  nebo třeba zdokonalíme ten typický výraz "Ňouma!". 
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="examples">
+        <div class="container">
+            <h2><span class="simpsons-text">Kuk na reference</span></h2>
+            <p>Mame velky pocet nadsenych zakazniku <span class="lower-highlight"><b> po cele Evrope.</b></span> 
+                Nasi klienti se k nam vraci znovu a znovu. 
+                Potrebujete spolehlivy darek HNED? <span class="lower-highlight"><b>S nami neriskujete! </b></span> 
+                Diky letům zkuseností v oboru vytvorime presne to, co ocekavate. 
+                Bez zklamani. Bez stresu. <span class="lower-highlight"><b>100% jistota spokojenosti </b></span> - to je nase zaruka. 
+                Kazdy projekt resime s absolutni profesionalitou a nasazenim, protoze vime, jak dulezity je pro vas ten spravny darek. 
+                Nechcete tratit cas? Nechcete riskovat zklamani?  <span class="lower-highlight"><b>Objednejte JESTE DNES </b></span>  a pridejte se k tisicum spokojench zakazniku!
+                Podivejte se na nase reference a presvedcte se sami - uspech mame v krvi!</p>
+           
+            
+        <!-- Horní řada -->
+        <div class="carousel-row carousel-row-top">
+            <div class="carousel-track">
+                <img src="https://cdn.myshoptet.com/usr/www.mujportret.cz/user/shop/big/139-2_styl-simpsonovi-gauc-rucne-malovana-karikatura-podle-fotografie.png?65e07df7" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_16-28-39.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-30-31.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-21-48.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-17-37.png" alt="">
+            </div>
+        </div>
+
+        <!-- Spodní řada -->
+        <div class="carousel-row carousel-row-bottom">
+            <div class="carousel-track">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-30-56.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-33-24.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-19-54.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-18-17.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-16-57.png" alt="">
+                 <!-- DUPLIKACE -->
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-30-56.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-33-24.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-19-54.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-18-17.png" alt="">
+                <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_18-16-57.png" alt="">
+            </div>
+        </div>
+
+    </div>
+</section>
+           
+           
+           
+           
+           
+           
+           
+            <!-- <div class="example-grid">
+                <div class="example-item">
+                    <div class="example-item">
+                    <img src="https://cdn.myshoptet.com/usr/www.mujportret.cz/user/shop/big/139-2_styl-simpsonovi-gauc-rucne-malovana-karikatura-podle-fotografie.png?65e07df7" alt="Ukázka 1" style="width: 100%;">
+                </div>
+            </div>
+                <div class="example-item">
+                    
+                        <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_16-28-39.png" alt="Ukázka 1" style="width: 100%;">
+                    
+                </div>
+                <div class="example-item">
+                    <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_16-32-58.png" alt="Ukázka 3" style="width: 100%;">
+                </div>
+                <div class="example-item">
+                    <img src="https://www.mujportret.cz/user/documents/upload/2025-05-17_16-33-26.png" alt="Ukázka 4" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </section>  -->
+
+    <section class="steps">
+        <!-- VLNA HORE -->
+    <div class="steps-wave-top">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,80 C480,0 960,160 1440,40 L1440,0 L0,0 Z" fill="#ffffff" />
+        </svg>
+    </div>
+
+        <div class="container">
+            <h2><span class="simpsons-text">Jak to funguje...</span></h2>
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-number"><span class="simpsons-text">1</span></div>
+                    <h3>Objednejte</h3>
+                    <p>Vyplňte objednávkový formulář a nahrajte své fotografie. 
+                        Nemáte fotky po ruce? nevadí, vytvořte objednávku a fotky dopošlete mailem.
+                         Budeme vás kontaktovat.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number"><span class="simpsons-text">2</span></div>
+                    <h3>My kreslíme</h3>
+                    <p>Naši umělci vytvoří personalizovanou karikaturu podle vašich fotografií. Nebude-li nám něco jasné, budeme vás kontaktovat.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number"><span class="simpsons-text">3</span></div>
+                    <h3>Schválení náhledu</h3>
+                    <p>Pošleme vám náhled n mail ke schválení a případným úpravám. Bez vašeho odsouhlasení obraz nevyrábíme.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number"><span class="simpsons-text">4</span></div>
+                    <h3>Dodání</h3>
+                    <p>Hotový obraz na plátně doručíme přímo k vašim dveřím.</p>
+                </div>
+            </div>
+        </div>
+        <div class="steps-wave-bottom">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+              <path d="M0,40 C480,160 960,0 1440,80 L1440,120 L0,120 Z" fill="#f9f9f9" />
+            </svg>
+          </div>
+        </section>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            
+            <img src="https://www.mujportret.cz/user/documents/upload/dddddd.png" alt="obrazy." class="Sizecomparison-img">
+            <h2><p>Vybíráte ze dvou velikostí obrazů.</p>
+                <p><span class="underlined" >30x40 cm, </span> </span> který je  <span class="lower-highlight">zcela ZDARMA</span> <p>
+                </p>nebo <span class="underlined">50x70 cm,</span> </span> která dodá celému dílu <span class="lower-highlight">luxusní charakter</span> </h2>
+              
+            </div>
+
+    </section>
+    <section class="testimonials">
+        <div class="container">
+            <h2> Co říkají naši zákazníci</span></h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text-block">
+                            <div class="rating">★★★★★</div>
+                            <p class="testimonial-text">"Naprosto úžasný dárek pro mého manžela k narozeninám! Celá rodina se smála, jak přesně nás umělec vystihl. Kvalita plátna je skvělá."</p>
+                            <p class="testimonial-author">- Markéta K., Praha</p>
+                        </div>
+                         <div class="testimonial-photo">
+                        <img src="https://www.mujportret.cz/user/documents/upload/Simpsonovi Gauč 3.jpg" alt="Markéta K.">
+                    </div>
+                </div>    
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text-block">
+                            <div class="rating">★★★★★</div>
+                            <p class="testimonial-text">"Objednala jsem karikaturu jako svatební dar a byl to naprostý hit! Nejen že novomanžele dokonale vystihli, ale hodně je rozesmáli."</p>
+                            <p class="testimonial-author">- Jan N., Brno</p>
+                        </div>
+                        <div class="testimonial-photo">
+                            <img src="https://www.mujportret.cz/user/documents/upload/IMG-20240616-WA0020.jpg" alt="Markéta K.">
+                        </div>  
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text-block">
+                            <div class="rating">★★★★★</div>
+                            <p class="testimonial-text">"Fantastická práce! Dodání bylo rychlejší, než jsem očekával, a kvalita předčila má očekávání. Určitě doporučuji!"</p>
+                            <p class="testimonial-author">- Tomáš V., Ostrava</p>
+                        </div>
+                        <div class="testimonial-photo">
+                            <img src="https://www.mujportret.cz/user/documents/upload/2025-05-18_12-05-34.png" alt="Markéta K.">
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="advantages">
+        <div class="container">
+            <h2>Takže co všechno získáte jednou objednávkou?</h2>
+            
+    <ol class="list">
+        <li class="item">
+          <h2 class="headline">Dárek na výročí, narozeniny, svatby</h2>
+          <span>Inspirace na dárek pro každého člena rodiny a na několik let dopředu.</span>
+        </li>
+        <li class="item">
+          <h2 class="headline">Obraz na plátně velikosti 30x40 cm zdarma.</h2>
+          <span>Ano, obraz nestojí u nás nic. </span>
+        </li>
+        <li class="item">
+          <h2 class="headline">Dopravu zdarma</h2>
+          <span></span>
+        </li>
+        <li class="item">
+            <h2 class="headline">Neomezené korekce</h2>
+            <span>Kresbu s vámi ladíme dokud nebudete spokojeni.</span>
+          </li><li class="item">
+            <h2 class="headline">Garanci vrácení peněz</h2>
+            <span>Když s kresbou nebudete spokojeni, vrátíme vám peníze.</span>
+          </li>
+      </ol>
+
+    </div>
+</section>
+
+
+
+
+
+  
+ <section class="order-form" id="order-form">
+        <div class="container">
+            <h2><span class="simpsons-text">Objednejte si Karikaturu</span></h2>
+                   
+
+            <form id="karikaturaForm">
+                <div class="countdown">
+                    AKCE: Sleva 20% končí za 24:00:00
+                </div>
+                <div class="price">
+                    <div class="old-price">Původně: <span id="oldPrice">1 499 Kč</span></div>
+                    <div class="price">Cena nyní: <span id="Price">1 199 Kč</span><span class="discount">-20%</span></div>
+
+                    
+                    <p class="price-note">* Cena zahrnuje návrh, tisk na plátno a dopravu. Do týdne je obraz u vás doma.</p>
+                </div>
+                 <!-- slider-->
+                 
+                 <div class="form-group">
+                    <label for="people">Počet lidí/zvířat v karikatuře: <span id="sliderValue">1</span></label>
+                    
+                    <div class="slidecontainer">
+                      <input type="range" min="1" max="8" value="1" step="1" class="slider" id="people">
+                      
+  
+
+
+                     
+
+                      <!-- Tick marks -->
+                      <div class="slider-labels">
+                        
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                    
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label>Velikost obrazu:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="size1" name="size" value="30x40" required>
+                            <label for="size1">30x40 cm (ZDARMA)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="size2" name="size" value="50x70">
+                            <label for="size2">50x70 cm (+300 Kč)</label>
+                        </div>
+                    </div>
+                </div>
+                 
+                
+                <div class="form-group">
+                    <div class="input-row">
+                      <div class="input-group">
+                        <label for="firstName">Jméno:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Jméno" required>
+                      </div>
+                      <div class="input-group">
+                        <label for="lastName">Příjmení:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Příjmení" required>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Telefon:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Ulice a číslo popisné:</label>
+                    <textarea id="address" name="address" rows="1" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="ZIP">PSČ:</label>
+                    <textarea id="ZIP" name="ZIP" rows="1" required></textarea>
+                </div>
+                
+                <!--   <div class="form-group">
+                    <label>Počet lidí/zvířat v karikatuře:</label>
+                    <select id="people" name="people" required>
+                        <option value="">Vyberte počet</option>
+                        <option value="1">1 osoba/zvíře</option>
+                        <option value="2">2 osoby/zvířata</option>
+                        <option value="3">3 osoby/zvířata</option>
+                        <option value="4">4 osoby/zvířata</option>
+                        <option value="5">5 osob/zvířat</option>
+                        <option value="6">6 osob/zvířat</option>
+                        <option value="7">7 osob/zvířat</option>
+                        <option value="8">8 osob/zvířat</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Velikost obrazu:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="size1" name="size" value="30x40" required>
+                            <label for="size1">30x40 cm (+0 Kč)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="size2" name="size" value="50x70">
+                            <label for="size2">50x70 cm (+200 Kč)</label>
+                        </div>
+                    </div>
+                </div>-->
+                
+                <div class="form-group">
+                    <label for="photos">Nahrajte své fotografie (max. 5 souborů):</label>
+                    <div class="file-input">
+                        <input type="file" id="photos" name="photos" multiple accept="image/*" required>
+                        <p>Nemáte fotku po ruce? Nevadí. Dokončete objednávku <span class="underlined">ať vám neuteče sleva</span> a pošlete nám fotky na <b>info@mujportret.cz</b></p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Poznámky k objednávce:</label>
+                    <textarea id="notes" name="notes" rows="2" placeholder="Popište zde speciální požadavky, zájmy nebo osobnostní rysy, které chcete zahrnout."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class="express-highlight">
+                      <input type="checkbox" id="express" name="express">
+                      <label for="express">⚡ Spěchám na dárek. Chci expresní zhotovení – zpracování do 3 dní + zaslání (+540 Kč)</label>
+                    </div>
+                  </div>
+
+                  <div class="price">
+                    <div class="old-price">Původně: <span id="oldPriceBottom">1 499 Kč</span></div>
+                    <div class="current-price">
+                      Cena nyní: <span id="PriceBottom">1 199 Kč</span><span class="discount">-20%</span>
+                    </div>
+                  </div>
+                
+
+                  <div class="form-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Odesláním objednávky souhlasím s <a href="/obchodni-podminky" target="_blank">obchodními podmínkami</a>.</label>
+                  </div>
+                  
+                  <div class="form-group">
+                    <input type="checkbox" id="gdpr" name="gdpr" required>
+                    <label for="gdpr">Souhlasím se <a href="/ochrana-osobnich-udaju" target="_blank">zpracováním osobních údajů</a>.</label>
+                  </div>
+
+                <button type="submit" class="btn" style="width: 100%;">OBJEDNAT NYNÍ</button>
+               
+
+                <p style="text-align: center; margin-top: 20px;">Garancí spokojenosti - pokud nebudete spokojeni, vrátíme vám peníze</p>
+            </form>
+        </div>
+        
+        <div class="guaranteePhoto">
+            <img src="https://www.mujportret.cz/user/documents/upload/Návrh bez názvu (2).png" alt="Garance">
+        </div> 
+    </section>
+
+      
+    
+
+    <section class="faq"> 
+        <div class="container">
+            <h2>Často kladené otázky</h2>
+            
+            <div class="faq-item">
+                <p class="faq-question">Jak dlouho trvá vytvoření karikatury?</p>
+                <p>Standardní doba zpracování je 7-10 pracovních dní. Po dokončení návrhu vám zašleme elektronický náhled ke schválení.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Jaká je kvalita plátna?</p>
+                <p>Používáme pouze prémiové plátno s gramáží 340g/m² a špičkové pigmentové inkousty s UV ochranou pro zachování barev po mnoho let.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Mohu zahrnout domácí mazlíčky?</p>
+                <p>Ano, rádi zahrneme do karikatury i vaše domácí mazlíčky. Stačí je započítat do celkového počtu postav.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Jak probíhá doručení obrazu?</p>
+                <p>Obraz je pečlivě zabalen do ochranného obalu a doručen přepravní službou. Doprava po ČR je zdarma.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee">
+        <div class="container">
+            <h2>Naše garance</h2>
+            <p>100% záruka spokojenosti nebo vrátíme peníze</p>
+            <p>Jsme si jisti kvalitou našich karikatur. Pokud nebudete s výsledkem spokojeni, upravíme ho podle vašich požadavků nebo vám vrátíme peníze.</p>
+        </div>
+    </section>
+
+
+    
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Vaše Karikatury | Všechna práva vyhrazena</p>
+            <p>Kontakt: info@vase-karikatury.cz | Tel: +420 123 456 789</p>
+        </div>
+    </footer>
+   
+   
+    
+    <script>
+        // Jednoduchý odpočet pro vytvoření naléhavosti
+        function updateCountdown() {
+            const now = new Date();
+            const hours = 23 - now.getHours();
+            const minutes = 59 - now.getMinutes();
+            const seconds = 59 - now.getSeconds();
+            
+            document.querySelector('.countdown').innerHTML = 
+                `AKCE: Sleva 20% končí za ${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Předplatný formulář
+       document.getElementById('karikaturaForm').addEventListener('submit', function(e) {
+             e.preventDefault();
+             alert('Děkujeme za vaši objednávku! Brzy vás budeme kontaktovat ohledně dalších detailů.');
+         });
+    // </script>
+    
+    
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+
+.lower-highlight {
+    position: relative;
+    display: inline-block;
+    z-index: 0;
+  }
+  
+  .lower-highlight::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    background: #ffeb3b; /* nebo jiná barva zvýraznění */
+    z-index: -1;
+    border-radius: 4px;
+    opacity: 100%;
+  }
+  /* underline */ 
+  .underlined {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 10px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='12'><path d='M0,8 Q25,4 50,8 T100,8' stroke='%23cb1829' fill='transparent' stroke-width='3'/></svg>");
+    background-repeat: repeat-x;
+    background-size: 100px 20px;
+    background-position: 0 100%;
+  }
+    /* obrazek 2 zeny dri obraz*/
+  .Sizecomparison-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 70px;
+  }
+   /* tlačítko */ 
+   .btn {
+    display: inline-block;
+    background-color: var(--btn_color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.responsive-img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 30px auto 0;
+    object-fit: contain;
+    max-height: 400px;
+}
+.hero-img-container {  /* nastavení obrázku na prní straně nahoře */ 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px ;
+    transform: translateY(10px);
+
+  }
+  .description-img-container {  /* nastavení obrázku v sekci popisu produktu */ 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px; /* volitelné - sjednocení vzhledu */
+    max-width: 80%;     /* zajistí, že obrázek nepřetéká */
+    height: auto;        /* zachování poměru stran */
+    display: block;      /* odstranění spodní mezery */
+    margin: 0 auto;      /* centrování obrázku */
+    margin-bottom: 30px;
+}
+  
+                                /* carousel ukázek prací*/
+
+  .examples {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.carousel-row {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px;
+    /* aspect-ratio: 3 / 2;  → ODSTRANIT */
+    position: relative;
+    height: 45vw;
+
+}
+
+.carousel-track {
+    display: flex;
+   /* width: max-content;*/
+   animation: scroll-left 30s linear infinite;
+    height: 100%;
+    min-width: fit-content;
+}
+
+.carousel-row-bottom .carousel-track {
+    animation: scroll-right 30s linear infinite;
+}
+
+.carousel-track img {
+    width: 50vw; /* 2 obrázky na řadu na mobilu */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+/* Animace pro obě řady */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scroll-right {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Na větších obrazovkách carousel skryjeme a zobrazíme klasickou grid verzi 
+@media screen and (min-width: 768px) {
+    .carousel-row {
+        display: none;
+    }
+}*/
+
+@media screen and (min-width: 768px) {
+    .carousel-track img {
+        width: 30vw; /* místo 50vw – 3 až 4 obrázky vedle sebe */
+        height: 100%;
+    }
+
+    .carousel-row {
+        height: 30vw; /* nebo např. 35vw pro menší výšku */
+    }
+}
+.simpsons-text {
+    font-family: 'Simpsonfont_DEMO';
+    font-size: 2rem;
+    color: #ffcc00;
+    text-shadow:1px 1px 2px black;
+    line-height: 0.5;
+}
+
+/* Objednávkový formulář */
+
+
+     .order-form {
+            padding: 80px 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), /* url('/api/placeholder/1200/600') center/cover*/;
+            position: relative; /* aby guaranteePhoto bylo pozicováno vůči této sekci */
+  overflow: visible;  /* zajistí, že obrázek může "přetékat" ven */
+        }
+        
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--secondary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .file-input {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+                .input-row {
+                    display: flex;
+                    gap: 20px; /* mezera mezi jménem a příjmením */
+                }
+                
+                .input-row input {
+                    width:100%;
+                }
+
+                .input-group label {
+                    display: block;
+                    margin-bottom: 8px;
+                    font-weight: bold;
+                }
+         
+                .express-checkbox {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-top: 15px;
+                    font-weight: bold;
+                  }
+                  
+                  .express-checkbox input[type="checkbox"] {
+                    transform: scale(1.8); /* zvětší checkbox */
+  accent-color: #e91e63;
+  cursor: pointer;
+  margin-right: 8px;
+  transform-origin: left center;
+                  }
+                  .express-highlight {
+                    border: 2px dashed #e91e63;
+                    background: linear-gradient(45deg, #ffe082, #fffde7);
+                    padding: 20px;
+                    margin-top: 20px;
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.2);
+                    transition: background 0.3s ease;
+                  }
+                  
+                  .express-highlight:hover {
+                    background: linear-gradient(45deg, #fff59d, #ffffff);
+                  }
+                  
+                  .express-highlight input[type="checkbox"] {
+                    width: 20px;
+                    height: 20px;
+                    accent-color: #e91e63; /* zbarví zaškrtávátko na růžovo */
+                  }
+
+                  .highlight-box {
+                    border: 2px dashed #ef0d0d;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+                  }
+
+         
+            
+
+        
+        .file-input:hover {
+            border-color: var(--secondary-color);
+        }
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+                .old-price {
+                    font-size: 1.2rem;
+                    text-decoration: line-through;
+                    color: #888;
+                }
+
+        .discount {
+            background-color: #ff4136;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .countdown {
+            background-color: #f43b3b;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #f9f7f7;
+        }
+
+/* Slider ptro nastavení množství*/
+
+.slidecontainer {
+    width: 100%;
+    max-width: 500px; /* Width of the outside container */
+    position: relative;
+    text-align: center;
+  margin-bottom: 20px;
+  }
+
+  .slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 15px; /* Specified height */
+    border-radius: 20px; 
+    background: linear-gradient(to right, rgb(209, 209, 208), rgb(184, 183, 183));
+
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 45px; /* Set a specific slider handle width */
+    height: 45px; /* Slider handle height */
+    border-radius: 50%;
+    background: var(--accent-color); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 35px; /* Set a specific slider handle width */
+    height: 35px; /* Slider handle height */
+    background: var(--secondary-color); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+        /* Tick label styles */
+        .slider-labels {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            margin-top: 5px;
+            
+            font-size: 16px;
+            color: #333;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+      
+
+/* Seznam shrnuti výhod*/
+
+:root {
+    --bg: var(--primary-color);
+    --highlight1: #0073cf;
+    --highlight2: #8d9ef6;
+    --color: #1a1e24;
+    --font-number: Simpsonfont_DEMO;
+   /*  --font-head: "Space Mono", Consolas, Menlo, Monaco, "Courier New", monospace;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
+}
+
+.list {
+    list-style: none;
+    width: 600px;
+    max-width: 90%;
+}
+
+.item {
+    display: block;
+    clear: both;
+    counter-increment: list;
+    padding-bottom: 4rem;
+    font-size: 1.1rem;
+    line-height: 1.375;
+    position: relative;
+}
+
+.item:before {
+    font: bold 2.25rem/1 var(--font-number);
+    content: counter(list);
+    width: 5rem;
+    height: 5rem;
+    float: left;
+    margin: 0 1.5rem 0.75rem 0;
+    color: var(--bg);
+    background: var(--highlight1) linear-gradient(to bottom right, var(--highlight1) 25%, var(--highlight2));
+    text-shadow: 0 0 2px var(--highlight1);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    shape-outside: ellipse();
+    z-index: 1;
+}
+
+.item:after {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background: var(--highlight1);
+    z-index: -1;
+    border-top-left-radius: 3px;
+}
+
+
+.headline {
+    padding: 0rem 0 0 0;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;       /* ✅ Zajistí tučné písmo */
+    text-transform: uppercase; /* ✅ Všechna písmena velká */
+}
+
+/* pozadí */
+.advantages {
+    background-image: url('https://www.transparenttextures.com/patterns/shattered.png');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 0;
+}
+
+/* plaketa */
+
+.guaranteePhoto {
+    position: absolute;
+    bottom: -120px; /* přetéká 40px do druhé sekce – uprav podle potřeby */
+    left: auto;
+    right: 7%;
+    z-index: 10; /* pokud má být navrchu */
+  }
+  
+  .guaranteePhoto img {
+    max-width: 300px; /* nebo velikost podle potřeby */
+    height: 300px;
+  }
+
